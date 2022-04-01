@@ -15,9 +15,9 @@ def getType(content, loaded_model):
   all_stopwords = stopwords.words('english')
   content = [ps.stem(word) for word in content if not word in set(all_stopwords)]
   content = ' '.join(content)
-  content = [content]
+  corpus = [content]
   cv = CountVectorizer(max_features = 1500)
-  new_X_test = cv.transform(content).toarray()
+  new_X_test = cv.transform(corpus).toarray()
   new_y_pred = loaded_model.predict(new_X_test)
   return new_y_pred
 
